@@ -5,7 +5,7 @@
 Summary:	Generic image processing library
 Name:		gegl
 Version:	0.2.0
-Release:	8
+Release:	9
 License:	GPL v2
 Group:		Applications
 Source0:	ftp://ftp.gimp.org/pub/gegl/0.2/%{name}-%{version}.tar.bz2
@@ -23,9 +23,11 @@ BuildRequires:	exiv2-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk+-devel
+BuildRequires:	lensfun-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	librsvg-devel
+BuildRequires:	lua-devel
 BuildRequires:	pkg-config
 BuildRequires:	rsvg-convert
 BuildRequires:	w3m
@@ -80,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/gegl-*/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{,gegl-*/}*.la
 
 %find_lang %{name}-0.2
 
